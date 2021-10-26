@@ -1,5 +1,7 @@
 package day02;
 
+import javax.swing.JOptionPane;
+
 public class Ex06 {
 	/*
 		실수를 입력한후
@@ -13,4 +15,25 @@ public class Ex06 {
 			소수 세째자리 이하는 버리면 된다.
 		
 	 */
+	
+	public static void main(String[] args) {
+		String str = JOptionPane.showInputDialog("소수이하 세자리이상되는 실수를 입력하세요!");
+		double dNo = Double.parseDouble(str);
+		
+		/*
+		double tmp = dNo + 0.005;
+		tmp *= 100;
+		int no = (int) tmp;
+		
+		double result = no / 100.;
+		*/
+		
+		int tmp = (int)(dNo * 1000) + 5;
+		tmp /= 10;
+		
+		double result = tmp / 100.0;
+		
+		
+		JOptionPane.showMessageDialog(null, "입력한 숫자 : " + dNo + "\n반올림한 숫자 : " + result);
+	}
 }
