@@ -9,4 +9,17 @@ public class Ex03 {
 		참고 ]
 			0.5일은 12시간이다.
 	 */
+	
+	public static void main(String[] args) {
+		double data = 365.2426;
+		int year = (int)data;
+		int tmp = (int)((data - year) * 24 * 3600);
+		int hour = tmp / 3600;
+		tmp %= 3600;	// ==> tmp = tmp % 3600;
+		int min = tmp / 60;
+		tmp %= 60;
+		int sec = tmp;
+		
+		
+	}
 }
