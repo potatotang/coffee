@@ -11,4 +11,18 @@ public class Ex04 {
 			
 		특수문자들	0 ~ 9 	대문자들	특수문자	소문자 		특수문자 
 	 */
+	
+	public static void main(String[] args) {
+		// 작업순서
+		// 1. 문자만들고
+		char ch = (char)(Math.random()*256);
+		// 2. 비교해서 어떤문자인지 판별하고
+		String result = (ch < 'A')? "영문자가 아닙니다." : (
+					(ch <= 'Z') ? "대문자입니다." : (
+									(ch >= 'a' & ch <= 'z') ? "소문자입니다." : "영문자가 아닙니다."
+								)
+				);
+		// 3. 결과 출력하고
+		System.out.println("랜덤하게 만들어진 문자 " + ch + " 는 " + result);
+	}
 }
