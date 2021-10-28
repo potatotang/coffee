@@ -42,7 +42,7 @@ public class Ex03 {
 		
 		for(int i = 0 ; i < count[0].length ; i++ ) {
 			// 제목출력
-			System.out.print((char)(count[0][i]) + " : ");
+			System.out.printf("%s [ %3d ] ", (char)(count[0][i]), count[1][i]);
 			for(int j = 0 ; j < count[1][i] ; j++ ) {
 				System.out.print("■");
 			}
