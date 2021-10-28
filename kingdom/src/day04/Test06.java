@@ -1,5 +1,7 @@
 package day04;
 
+import java.util.Arrays;
+
 public class Test06 {
 /*
 	배열의 복사
@@ -33,7 +35,7 @@ public class Test06 {
 					복사된데이터는 독립적으로 사용된다.
 					
 				명령 ]
-					System.arrayCopy(1, 2, 3, 4, 5);
+					System.arraycopy(1, 2, 3, 4, 5);
 					
 						1 : 원본데이터의 주소
 						2 : 원본데이터에서 복사를 시작할 위치
@@ -47,13 +49,41 @@ public class Test06 {
 		1. 한번 배열의 크기를 정하면 그 크기를 수정하지 못한다.
 		
 		2. 같은 타입의 데이터만 관리할 수 있다.
-		
-		
-		
-		
+			==> 주소는 Heap Type에 의해서 결정되고
+				Heap Type이 다르면 사용할 수 없다.(호환되지 않는다.)
  */
 	public static void main(String[] args) {
-
+		int no = 10;
+		double no1 = no;
+		
+		int[] num1 = {1, 2, 3, 4, 5};
+//		double[] num2 = num1; // heap Type 이 달라서 에러...
+		
+		int[] num2 = num1; // 얕은 복사
+		
+		// num1, num2 출력
+		
+		System.out.println("# num1 : " + Arrays.toString(num1));
+		System.out.println("# num2 : " + Arrays.toString(num2));
+		
+		//num1[2] 데이터 수정
+		num1[2] = 30;
+		
+		// 배열 출력
+		System.out.println("# num1 : " + Arrays.toString(num1));
+		System.out.println("# num2 : " + Arrays.toString(num2));
+		
+		// 깊은 복사
+		int[] numcopy = new int[10];
+		System.arraycopy(num1, 0, numcopy, 3, num1.length);
+		
+		// numcopy의 6번째 데이터 300으로 수정
+		numcopy[5] = 300;
+		
+		// 비교출력
+		System.out.println("# num1 : " + Arrays.toString(num1));
+		System.out.println("# numcopy : " + Arrays.toString(numcopy));
+		
 	}
 
 }
