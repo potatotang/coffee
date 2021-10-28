@@ -8,12 +8,18 @@ public class Ex08 {
 	4. 총점이 높은 사람순으로 정렬해서 수정하고
 	5. 출력하세요.
 	
-	국어 | 영어 | 수학 | 총점
+	extra ]
+		각 과목별 총점을 입력하세요.
+	
+		국어 | 영어 | 수학 | 총점
 1
 2
 3
 4
-5	
+5
+총점	
+
+
  */
 	public static void main(String[] args) {
 
