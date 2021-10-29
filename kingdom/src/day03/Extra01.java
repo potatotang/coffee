@@ -22,4 +22,35 @@ public class Extra01 {
 		
 		제 차를 찾아주세요!
 	 */
+	public static void main(String[] args) {
+		char a, b, c, d;
+		
+		for(a = '3' ; a <= '9' ; a++ ) {
+			d = (char)(a - 2);
+			for(b = '2'; b <= '9' ; b++ ) {
+				if(b == a || b == d) {
+					continue;
+				}
+				for(c = '1'; c < '9'; c++) {
+					if(c == a || c == b || c == d) {
+						continue;
+					}
+					
+					// 이 행을 실행하는 경우는 모든 숫자가 다른경우이므로
+					// 네자리 숫자로 만들어서
+					// 전화번호와 차번호를 합한 값과 비교해준다.
+					
+					int cha = Integer.parseInt("" + a + b + c + d);
+					int tel = Integer.parseInt("" + d + c + b + a);
+					
+					int hap = cha + tel;
+					
+					if(hap == 16456) {
+						System.out.println(cha);
+					}
+				}
+			}
+			
+		}
+	}
 }
