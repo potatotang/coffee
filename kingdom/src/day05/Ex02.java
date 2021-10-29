@@ -10,8 +10,9 @@ public class Ex02 {
 		숫자를 입력해서 실행하면 해당숫자의 길이를 가지는 배열을 만들고
 		...
  */
-	public static void main(String[] args) {
 
+	public static void main(String[] args) {
+		
 	}
 
 }
