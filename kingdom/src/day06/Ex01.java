@@ -15,7 +15,37 @@ package day06;
 public class Ex01 {
 
 	public static void main(String[] args) {
-
+		/*
+		Student s1 = new Student();
+		s1.name = "제니";
+		*/
+		
+		String[] names = {"제니", "로제", "리사", "지수", "둘리"};
+		int[][] score = new int[5][5];
+		
+		for(int i = 0 ; i < score.length ; i++) {
+			for(int j = 0 ; j < score[i].length ; j++ ) {
+				score[i][j] = (int)(Math.random()*61 + 40);
+			}
+		}
+		
+		
+		Stud[] s1 = new Stud[5];
+		
+		for(int i = 0 ; i < s1.length ; i++ ) {
+			s1[i] = new Stud(names[i], i+ 1, score[i][0], score[i][1], score[i][2], score[i][3], score[i][4]);
+		}
+		
+		// 출력
+		for(Stud s : s1) {
+			s.toPrint();
+		}
+		
+//		s1[0].name;	// name 변수의 접근지정자가 private 이기 때문에 이 클래스에서는 접근할 수 없다.
 	}
-
+	
+	// 학생들의 석차구해주는 함수
+	public void setSukcha(Stud[] stArr) {
+		
+	}
 }
