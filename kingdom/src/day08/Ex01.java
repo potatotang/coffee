@@ -6,10 +6,15 @@ package day08;
  */
 import java.util.*;
 public class Ex01 {
+	String str = "https://www.cnu.com/prof.cnu?id=euns&pw=1234&name=전은석&mail=euns_jun@naver.com";
+	StringTokenizer token = new StringTokenizer(str, "?");
 	
 	public Ex01() {
-		String str = "https://www.cnu.com/prof.cnu?id=euns&pw=1234&name=전은석&mail=euns_jun@naver.com";
-		StringTokenizer token = new StringTokenizer(str, "?");
+//		solv1();
+		solv2();
+	}
+	
+	public void solv1 () {
 		
 		String result = "";
 		while(token.hasMoreTokens()) {
@@ -35,6 +40,24 @@ public class Ex01 {
 		
 		System.out.println("key : " + Arrays.toString(key));
 		System.out.println("value : " + Arrays.toString(data));
+		
+	}
+	
+	public void solv2() {
+		String[] origin = new String[token.countTokens()];
+		
+		for(int i = 0 ; token.hasMoreElements() ; i++ ) {
+			origin[i] = token.nextToken();
+		}
+		
+		System.out.println("origin : " + Arrays.toString(origin));
+		
+		StringTokenizer tk1 = new StringTokenizer(origin[1], "&");
+		String[] tmp1 = new String[tk1.countTokens()];
+		for(int i = 0 ; tk1.hasMoreElements() ; i++ ) {
+			tmp1[i] = tk1.nextToken();
+		}
+		System.out.println("tmp1 : " + Arrays.toString(tmp1));
 	}
 	
 	public static void main(String[] args) {
