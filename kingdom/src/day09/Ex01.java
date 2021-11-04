@@ -6,8 +6,8 @@ package day09;
  */
 import java.util.*;
 public class Ex01 {
-
-	public static void main(String[] args) {
+	public ArrayList stud;
+	public Ex01() {
 		Vector name = new Vector(5);
 		name.add("제니");
 		name.add("로제");
@@ -15,7 +15,7 @@ public class Ex01 {
 		name.add("지수");
 		name.add("둘리");
 		
-		HashSet subj = new HashSet();
+		TreeSet subj = new TreeSet();
 		subj.add("1. java");
 		subj.add("2. db");
 		subj.add("3. web");
@@ -23,6 +23,7 @@ public class Ex01 {
 		subj.add("5. spring");
 		
 		ArrayList java = new ArrayList(); // 각 학생들의 java 점수
+		
 		ArrayList db = new ArrayList(); //각 학생들의 db 점수
 		
 		// 각 학생들의 web 점수
@@ -43,6 +44,10 @@ public class Ex01 {
 		
 		// 모든 학생들의 점수 정보
 		
+		
+	}
+	public static void main(String[] args) {
+		new Ex01();
 	}
 
 }
