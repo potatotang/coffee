@@ -1,0 +1,6 @@
+name=둘리
+age=1
+height=151.5
+addr=서울시 고길동네 집
+job=머슴
+mail=dooly@cnu.ac.kr

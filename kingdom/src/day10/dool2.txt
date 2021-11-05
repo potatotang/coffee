@@ -1,0 +1,6 @@
+name=\ub458\ub9ac
+age=1
+height=151.5
+addr=\uc11c\uc6b8\uc2dc \uace0\uae38\ub3d9\ub124 \uc9d1
+job=\uba38\uc2b4
+mail=dooly@cnu.ac.kr
