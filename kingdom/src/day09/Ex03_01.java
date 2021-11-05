@@ -2,6 +2,9 @@ package day09;
 
 import java.util.*;
 import javax.swing.*;
+
+
+@SuppressWarnings("rawtypes")
 public class Ex03_01 {
 	HashMap studMap = new HashMap();
 
@@ -73,11 +76,14 @@ public class Ex03_01 {
 			StringBuffer buff = new StringBuffer();
 			while(subjIt.hasNext()) {
 				subjName = subjIt.next();
-				buff.append(subjName + " : " + resultMap.get(subjName) + "\n");
+				buff.append(String.format("%-7s : " + (subjName.equals("name")?"%s":(subjName.equals("avg")? "%5.2f": "%3d")) + "\n" , subjName, resultMap.get(subjName)));
 //				System.out.println(subjName + " : " + resultMap.get(subjName));
 			}
-			int result = JOptionPane.showConfirmDialog(null, subjName + " : " + resultMap.get(subjName));
-			System.out.println(result);
+			String msg = buff.toString();
+			System.out.println(msg);
+			JOptionPane.showMessageDialog(null, msg);
+//			int result = JOptionPane.showConfirmDialog(null, buff.toString());
+//			System.out.println(result);
 //			System.out.println();
 		}
 		
@@ -87,53 +93,77 @@ public class Ex03_01 {
 	public void toPrint(String name) {
 		HashMap resultMap = (HashMap) studMap.get(name);
 		Set subjKey = resultMap.keySet();
+		StringBuffer buff = new StringBuffer();
 		Iterator<String> subjIt = subjKey.iterator();
 		while(subjIt.hasNext()) {
 			String subjName = subjIt.next();
-			System.out.println(subjName + " : " + resultMap.get(subjName));
+			buff.append(String.format("%-7s : " + (subjName.equals("name")? "%5s" :(subjName.equals("avg") ? "%7.2f" : "%7d")) + "\n" , subjName, resultMap.get(subjName)));
+			System.out.println("*******");
+//			System.out.println(subjName + " : " + resultMap.get(subjName));
 		}
-		System.out.println();
+//		System.out.println();
+//		System.out.println(buff.toString());
+		String msg = buff.toString();
+//		System.out.println(msg);
+		JOptionPane.showMessageDialog(null, msg);
+		
+//		System.out.println(result);
 	}
 	
 	// 한 사람의 한과목 점수 조회
 	public void toPrint(String name, String subj) {
 		HashMap resultMap = (HashMap)studMap.get(name);
-		System.out.println("name : " + name);
-		System.out.println(subj + " : " + resultMap.get(subj));
-		System.out.println();
+		StringBuffer buff = new StringBuffer();
+		buff.append(String.format("%-7s : %5s", "name", name) + "\n");
+		buff.append(String.format("%-7s : " + ((subj.equals("avg")) ? "%7.2f": "%7d"), subj, resultMap.get(subj)));
+		
+		JOptionPane.showMessageDialog(null, buff.toString());
+//		System.out.println("name : " + name);
+//		System.out.println(subj + " : " + resultMap.get(subj));
+//		System.out.println();
 	}
 	
 	public void exec() {
 		// 학생 이름들 모두 출력
 		Set<String> set = studMap.keySet();
 		Iterator<String> itor = set.iterator();
-		
+		StringBuffer buff = new StringBuffer("| ");
+		while(itor.hasNext()) {
+			buff.append(itor.next() + " | ");
+//				System.out.print(itor.next());
+//				System.out.print(" |");
+		}
+		buff.append("\n");
+		String subject = buff.toString();
 		while(true) {
-			System.out.println("다음 학생중 조회학 학생을 입력하세요!\n종료는 q를 입력하세요!");
-			System.out.print("| ");
-			while(itor.hasNext()) {
-				System.out.print(itor.next());
-				System.out.print(" |");
-			}
-			System.out.println();
-			
-			System.out.print("학생 이름 : ");
-			Scanner sc = new Scanner(System.in);
+//			System.out.println("다음 학생중 조회할 학생을 입력하세요!\n종료는 q를 입력하세요!");
+//			System.out.print("| ");
+//			System.out.println();
+//			System.out.print("학생 이름 : ");
+//			Scanner sc = new Scanner(System.in);
 			// 메세지 출력
-			String name = sc.nextLine();
-			if(name.equals("q")) break;
+			String name = JOptionPane.showInputDialog("조회할 학생 이름을 입력하세요!\n종료는 q를 입력하세요!\n" + subject);
+			if(name == null || name.equals("q")) {
+				JOptionPane.showMessageDialog(null, "*** 프로그램을 종료합니다! ***");
+				break;
+			}
+			if(!set.contains(name)) {
+				continue;
+			}
 			
 			boolean bool = true;
 			while(bool) {
-				System.out.println("\t모든 정보는 a\n\t과목점수는 s\n\t총점은 t\n\t평균은 v\n\t이전단계는 p\n\t종료는 q\n를 입력하세요!");
-				String str = sc.nextLine();
-
+//				System.out.println("\t모든 정보는 a\n\t과목점수는 s\n\t총점은 t\n\t평균은 v\n\t이전단계는 p\n\t종료는 q\n를 입력하세요!");
+				String str = JOptionPane.showInputDialog("\t모든 정보는 a\n\t과목점수는 s\n\t총점은 t\n\t평균은 v\n\t이전단계는 p\n\t종료는 q\n를 입력하세요!");
+				
+				if(str == null) break;
 				switch(str) {
 				case "p":
 					bool = false;
 					break;
 				case "q":
-					System.out.println("*** 프로그램을 종료합니다! ***");
+					JOptionPane.showMessageDialog(null, "*** 프로그램을 종료합니다! ***");
+//					System.out.println("*** 프로그램을 종료합니다! ***");
 					return;
 				case "a":
 					toPrint(name);
@@ -145,8 +175,8 @@ public class Ex03_01 {
 					toPrint(name, "avg");
 					break;
 				case "s":
-					System.out.print("조회 과목 입력 : ");
-					String sub = sc.nextLine();
+//					System.out.print("조회 과목 입력 : ");
+					String sub = JOptionPane.showInputDialog("조회 과목을 입력하세요!");
 					toPrint(name,sub);
 					break;
 				} 
