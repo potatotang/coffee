@@ -48,7 +48,9 @@ public class Ex01 {
 			}
 		}
 		
-		System.out.println(subScore);
+		for(Object o : subScore) {
+			System.out.println(o);
+		}
 		// 총점 
 		ArrayList total = new ArrayList();
 		for(int i = 0 ; i < subScore.size() ; i++ ) {
@@ -117,7 +119,7 @@ public class Ex01 {
 		
 		// 출력
 		for(Object o : stud) {
-			ArrayList list = (ArrayList) o;
+			ArrayList<String> list = (ArrayList<String>) o;
 			System.out.println(list);
 		}
 		
