@@ -42,8 +42,16 @@ public class Test06 {
 			System.out.println(String.format("넓  이 : %7.2f",list.get(i).getArea()));
 			System.out.println("-------------------------");
 		}
+		
+//		getFig(l1); // Figure 포함 상위클래스들만 모아놓은 ArrayList 만 입력가능하다.
 	}
-
+	
+	public ArrayList<? super Figure> getFig(ArrayList<? super Figure> list) {
+		
+		
+		return list;
+	}
+	
 	public static void main(String[] args) {
 		new Test06();
 	}
