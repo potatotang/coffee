@@ -1,5 +1,6 @@
 package day12;
 
+import java.awt.Font;
 /*
 	jenny.txt 파일을 읽어보자.
 	
@@ -37,8 +38,9 @@ public class Test08 {
 			double height = jenny.getHeight();
 			
 			// 출력
-			String str = String.format("이름 : %s\n아이디 : %s\n비밀번호 : %s\n전화 : %s\n메일 : %s\n나이 : %3d\n신장 : %5.2f", 
-					name, id, pw, tel, mail, age, height);
+			String str = String.format("%-8s : %s\n%-7s : %s\n%-6s : %s\n%-6s : %s\n%-8s : %s\n%-8s : %3d\n%-8s : %5.2f", 
+					"이    름", name,"아 이 디",  id,"비밀번호", pw,"전화번호", tel,"메    일", mail,"나    이",  age, "신    장", height);
+			UIManager.put("OptionPane.messageFont", new Font("D2coding", Font.PLAIN, 14));
 			JOptionPane.showMessageDialog(null, str);
 		} catch(Exception e) {
 			e.printStackTrace();
