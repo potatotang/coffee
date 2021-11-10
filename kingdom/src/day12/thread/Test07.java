@@ -24,6 +24,12 @@ public class Test07 {
 					t1.suspend();
 				}catch(Exception e) {}
 			} else if(str.equals("x")) {
+				tmp1.setBool(true);
+				tmp2.setBool(true);
+				try {
+//					t1.stop();
+//					t2.stop();
+				} catch(Exception e) {}
 				break;
 			} else {
 				t1.resume();
@@ -34,6 +40,7 @@ public class Test07 {
 
 	public static void main(String[] args) {
 		new Test07();
+		System.out.println("main() 종료!!!");
 	}
 
 }

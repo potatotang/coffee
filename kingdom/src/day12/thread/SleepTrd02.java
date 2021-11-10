@@ -1,10 +1,13 @@
 package day12.thread;
 
 public class SleepTrd02 implements Runnable {
-
+	private boolean bool = false;
 	@Override
 	public void run() {
 		for(int i = 0 ; i < 100 ; i++ ) {
+			if(bool) {
+				break;
+			}
 			System.out.println("\t" + i + " 선생님이 치킨마요에 도전합니다." );
 			/*
 			 	한번 출력하면 비록 시간이 남았지만...
@@ -15,6 +18,12 @@ public class SleepTrd02 implements Runnable {
 				Thread.sleep(1000);
 			} catch(Exception e) {}
 		}
+	}
+	public boolean isBool() {
+		return bool;
+	}
+	public void setBool(boolean bool) {
+		this.bool = bool;
 	}
 
 }
