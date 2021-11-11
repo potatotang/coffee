@@ -31,7 +31,9 @@ public class EmpController {
 		eDao = new EmpDao();
 		// 안내메세지...
 		StringBuffer buff = new StringBuffer();
-		buff.append("1. 모든사원직급조회\n\n");
+		buff.append("1. 모든사원직급조회\n");
+		buff.append("2. 모든사원의 사원정보와 부서정보, 급여등급\n");
+		buff.append("3. 특정부서의 사원정보와 부서정보, 급여등급\n");
 		buff.append("11. 사원의 급여 수정\n\n");
 		buff.append("q. 프로그램 종료\n\n");
 		buff.append("원하는 작업번호를 입력하세요!");
