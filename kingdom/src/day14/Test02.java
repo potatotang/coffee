@@ -25,9 +25,9 @@ public class Test02 {
 			// 2. 커넥션 얻어오고
 			con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "scott", "tiger");
 			// 3. 질의명령 준비하고
-			String sql = "SELECT * FROM emp WHERE deptno = ?"; // 변경되는 데이터 부분은 ? 로 처리한다.
+			String sql = "SELECT empno eno, ename name, job, mgr, hiredate, sal, comm, deptno dno FROM emp WHERE deptno = ?"; // 변경되는 데이터 부분은 ? 로 처리한다.
 			// 4. 명령전달도구 준비하고
-			pstmt = con.prepareStatement(sql);
+			pstmt = con.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			// 5. 질의명령 완성하고
 			int dno = Integer.parseInt(JOptionPane.showInputDialog("부서번호 입력 : "));
 			pstmt.setInt(1, dno);
@@ -39,6 +39,16 @@ public class Test02 {
 				// VO 만들고
 				EmpVO eVO = new EmpVO();
 				// 데이터 채우고
+				eVO.setEno(rs.getInt("eno"));
+				eVO.setName(rs.getString("name"));
+				eVO.setJob(rs.getString("job"));
+				eVO.setMgr(rs.getInt("mgr"));
+				eVO.setSal(rs.getInt("sal"));
+				eVO.setComm(rs.getInt("comm"));
+				eVO.setDno(rs.getInt("dno"));
+				eVO.setHiredate(rs.getDate("hiredate"));
+				eVO.setSdate();
+				/*
 				eVO.setEno(rs.getInt("empno"));
 				eVO.setName(rs.getString("ename"));
 				eVO.setJob(rs.getString("job"));
@@ -48,10 +58,13 @@ public class Test02 {
 				eVO.setDno(rs.getInt("deptno"));
 				eVO.setHiredate(rs.getDate("hiredate"));
 				eVO.setSdate();
-				
+				*/
 				// 8. 리스트에 VO 담고
 				list.add(eVO);
 			}
+			
+			rs.first();
+			rs.getInt("eno");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
