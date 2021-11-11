@@ -79,5 +79,51 @@ public class EmpDao {
 		// 8. 리스트 반환하고
 		return list;
 	}
-
+	
+	// 사원의 급여수정하고 정보를 반환해주는 작업 전담 처리함수
+	public EmpVO editSal(String name, int sal) {
+		// 할일
+		// 커넥션 꺼내고
+		con = db.getCon();
+		// 질의명령 가져오고
+		String sql = eSQL.getSQL(eSQL.EDIT_ENO_SAL);
+		// 전달도구 준비하고
+		pstmt = db.getPSTMT(con, sql);
+		EmpVO eVO = new EmpVO();
+		try {
+			// 질의명령 완성하고
+			pstmt.setInt(1, sal);
+			pstmt.setString(2, name);
+			// 질의명령보내고 결과받고
+			int cnt = pstmt.executeUpdate();
+			eVO.setCnt(cnt);
+			if(cnt != 0) {
+				// 질의명령 다시 받고
+				sql = eSQL.getSQL(eSQL.SEL_INFO_NAME);
+				// 열려있는 pstmt 닫고
+				db.close(pstmt);
+				// 전달도구 준비하고
+				pstmt = db.getPSTMT(con, sql);
+				// 질의명령 완성하고
+				pstmt.setString(1, name);
+				// 질의명령 보내고 결과받고
+				rs = pstmt.executeQuery();
+				// 데이터꺼내서 VO에 담고
+				rs.next(); // 작업진행줄 한줄 내리고
+				eVO.setEno(rs.getInt("empno"));
+				eVO.setName(rs.getString("ename"));
+				eVO.setSal(rs.getInt("sal"));
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(eVO.getCnt() == 1) {
+				db.close(rs);
+			}
+			db.close(pstmt);
+			db.close(con);
+		}
+		// VO 반환하고
+		return eVO;
+	}
 }

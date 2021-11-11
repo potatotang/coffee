@@ -14,6 +14,7 @@ package empProj.sql;
  */
 public class EmpSQL {
 	public final int SEL_ALL_JOB = 1001;
+	public final int SEL_INFO_NAME = 1002;
 	
 	public final int EDIT_ENO_SAL = 2001;
 	
@@ -28,13 +29,21 @@ public class EmpSQL {
 			buff.append("FROM ");
 			buff.append("	emp ");
 			break;
+		case SEL_INFO_NAME:
+			buff.append("SELECT ");
+			buff.append("	empno, ename, sal ");
+			buff.append("FROM ");
+			buff.append("	emp ");
+			buff.append("WHERE ");
+			buff.append("	ename = ? ");
+			break;
 		case EDIT_ENO_SAL:
 			buff.append("UPDATE ");
 			buff.append("	emp ");
 			buff.append("SET ");
 			buff.append("	sal = ? ");
 			buff.append("WHERE ");
-			buff.append("	empno = ? ");
+			buff.append("	ename = ? ");
 			break;
 		}
 		

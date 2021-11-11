@@ -4,7 +4,7 @@ import java.sql.Time;
 import java.util.*;
 import java.text.*;
 public class EmpVO {
-	private int eno, dno, sal, comm, mgr;
+	private int eno, dno, sal, comm, mgr, cnt;
 	private String name, job, mgrname, sdate;
 	private Date hiredate;
 	private Time hireTime;
@@ -37,6 +37,12 @@ public class EmpVO {
 	}
 	public void setMgr(int mgr) {
 		this.mgr = mgr;
+	}
+	public int getCnt() {
+		return cnt;
+	}
+	public void setCnt(int cnt) {
+		this.cnt = cnt;
 	}
 	public String getName() {
 		return name;
