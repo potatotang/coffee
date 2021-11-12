@@ -27,7 +27,7 @@ public class MemberDao {
 		con = db.getCon();
 		// sql
 		String sql = mSQL.getSQL(mSQL.SEL_LOGIN);
-		System.out.println(sql);
+//		System.out.println(sql);
 		// pstmt
 		pstmt = db.getPSTMT(con, sql);
 		

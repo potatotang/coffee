@@ -85,7 +85,8 @@ public class Login extends JFrame {
 		this.add(tPan, BorderLayout.NORTH);
 		this.add(cPan, BorderLayout.CENTER);
 		this.add(bPan, BorderLayout.SOUTH);
-		System.out.println("######### " + this.getLayout().toString());
+		
+		
 		this.setSize(450, 300);
 		this.setVisible(true);
 		this.setResizable(false);
