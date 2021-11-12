@@ -14,7 +14,7 @@ import java.sql.*;
 public class CNUJDBC {
 	private String url, id, pw;
 	public CNUJDBC() {
-		this("jdbc:oracle:thin:@localhost:1521:xe", "scott", "tiger");
+		this("jdbc:oracle:thin:@localhost:1521:xe", "kingdom", "cookie");
 	}
 	
 	public CNUJDBC(String url, String id, String pw) {
